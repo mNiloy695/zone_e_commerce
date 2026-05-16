@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cinzel", "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Semantic Theme Variables */
+  --color-brand-primary: var(--bg-surface);
+  --color-brand-secondary: var(--text-base);
+  --color-brand-muted: var(--text-muted);
+  --color-brand-border: var(--border-subtle);
+  
+  --color-brand-accent-glow: #c5a059; /* Brushed Gold Luxe */
+  --color-brand-charcoal: var(--bg-elevated);
+  --color-brand-matte: var(--bg-deep);
+}
+
+@layer base {
+  :root {
+    /* Light Mode - Luxury Minimal */
+    --bg-surface: #fbfbfb;
+    --bg-elevated: #f4f4f4;
+    --bg-deep: #eeeeee;
+    --text-base: #050505;
+    --text-muted: #666666;
+    --border-subtle: rgba(5, 5, 5, 0.08);
+    --nav-bg: rgba(251, 251, 251, 0.8);
+  }
+
+  .dark {
+    /* Dark Mode - Matte Noir */
+    --bg-surface: #050505;
+    --bg-elevated: #0f0f0f;
+    --bg-deep: #000000;
+    --text-base: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.4);
+    --border-subtle: rgba(197, 160, 89, 0.15);
+    --nav-bg: rgba(5, 5, 5, 0.8);
+  }
+
+  body {
+    @apply bg-brand-primary text-brand-secondary font-sans selection:bg-brand-accent-glow selection:text-black overflow-x-hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tighter transition-colors duration-500;
+  }
+
+  a, button {
+    @apply transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  .noise {
+    @apply fixed inset-[-50%] w-[200%] h-[200%] pointer-events-none z-[100] visible;
+    background: transparent url('https://grainy-gradients.vercel.app/noise.svg') repeat 0 0;
+    opacity: 0.04;
+    filter: contrast(150%) brightness(120%);
+  }
+
+  .text-vibe-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #c5a059 30%, #f4f4f4 100%);
+  }
+
+  .glass {
+    @apply backdrop-blur-3xl border border-brand-border bg-brand-primary/10;
+  }
+  
+  .glass-dark {
+    @apply backdrop-blur-3xl border border-brand-border bg-brand-primary/70;
+  }
+
+  .text-hollow {
+    -webkit-text-stroke: 1px var(--text-base);
+    @apply opacity-20 text-transparent font-light;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 15px rgba(197, 160, 89, 0.4);
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .vertical-rl {
+    writing-mode: vertical-rl;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes slow-zoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
+  .animate-slow-zoom {
+    animation: slow-zoom 20s ease-in-out infinite alternate;
+  }
+}
+

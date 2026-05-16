@@ -1,0 +1,8 @@
+{
+  "name": "Veloura Zone",
+  "description": "Premium luxury streetwear t-shirt brand for Gen-Z, featuring minimal aesthetics and immersive animations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
