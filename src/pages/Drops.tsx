@@ -31,14 +31,14 @@ export const Drops = () => {
   }, []);
 
   return (
-    <main className="bg-brand-primary min-h-screen pb-32 md:pb-0">
+    <main className="bg-brand-primary min-h-screen pb-16 md:pb-0">
       <Navbar />
       <CartDrawer />
       <div className="noise" />
 
       <section className="pt-48 pb-24 px-6 md:px-12 text-center relative overflow-hidden">
         {/* Background Decorative Element */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-accent-glow/5 blur-[120px] rounded-full -z-10 animate-pulse" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-accent-glow/5 blur-[120px] rounded-full -z-10" />
 
         <div className="max-w-4xl mx-auto">
           <motion.div
@@ -46,7 +46,7 @@ export const Drops = () => {
             animate={{ opacity: 1, y: 0 }}
           >
             <span className="inline-flex items-center gap-3 px-6 py-2 rounded-full border border-brand-accent-glow/30 text-brand-accent-glow text-[10px] uppercase font-black tracking-[0.4em] mb-12">
-              <span className="w-2 h-2 bg-brand-accent-glow rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-brand-accent-glow rounded-full" />
               Upcoming: Edition 05
             </span>
             <h1 className="text-7xl md:text-[10rem] font-display font-black uppercase tracking-tighter leading-[0.8] mb-16">
@@ -91,10 +91,11 @@ export const Drops = () => {
             <div className="aspect-[16/9] bg-brand-matte rounded-[3rem] overflow-hidden group border border-brand-secondary/5">
               <img 
                 src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop" 
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" 
+                className="w-full h-full object-cover grayscale" 
                 alt="Sneak peek item"
                 loading="lazy"
                 referrerPolicy="no-referrer"
+                decoding="async"
               />
             </div>
             <div className="flex flex-col justify-center text-left max-w-xl">
@@ -104,7 +105,9 @@ export const Drops = () => {
                  Featuring integrated glowing fiber-optic seams and a detachable modular hood.
                </p>
                <div className="flex gap-4">
-                  <div className="w-12 h-12 rounded-full border border-brand-secondary/10 flex items-center justify-center text-brand-secondary/40 hover:text-brand-secondary transition-colors cursor-pointer"><Share2 size={18} /></div>
+                  <button aria-label="Share sneak peek" className="touch-target w-12 h-12 rounded-full border border-brand-secondary/10 flex items-center justify-center text-brand-secondary/40 hover:text-brand-secondary transition-colors">
+                    <Share2 size={18} />
+                  </button>
                </div>
             </div>
           </div>

@@ -35,9 +35,10 @@ export const CategoryGrid = () => {
             <img
               src={category.image}
               alt={category.name}
-              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
+              className="w-full h-full object-cover grayscale"
               referrerPolicy="no-referrer"
               loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent group-hover:from-brand-accent-glow/40 transition-all duration-700" />
             

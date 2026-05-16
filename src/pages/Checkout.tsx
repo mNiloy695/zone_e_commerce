@@ -4,15 +4,21 @@ import { Footer } from '../components/Footer';
 import { CartDrawer } from '../components/CartDrawer';
 import { useCart } from '../context/CartContext';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, ChevronRight, MapPin, Phone, Mail, User, CreditCard, ShieldCheck } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { CheckCircle2, ChevronRight, MapPin, Phone, Mail, User, CreditCard, ShieldCheck, Copy, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Checkout = () => {
-  const { items, totalAmount, clearCart } = useCart();
-  const navigate = useNavigate();
+  const { cart, totalPrice, clearCart } = useCart();
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
   const [placedOrderId, setPlacedOrderId] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyOrderId = () => {
+    navigator.clipboard.writeText(placedOrderId);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const [formData, setFormData] = useState({
     name: '',
@@ -22,9 +28,9 @@ export const Checkout = () => {
     address: ''
   });
 
-  if (items.length === 0 && !orderComplete) {
+  if (cart.length === 0 && !orderComplete) {
     return (
-      <main className="bg-brand-primary min-h-screen text-brand-secondary">
+      <main className="bg-brand-primary min-h-screen text-brand-secondary pb-16 md:pb-0">
         <Navbar />
         <div className="pt-60 pb-40 flex flex-col items-center justify-center px-8 text-center">
           <h1 className="text-4xl font-display font-black uppercase mb-6">Your cart is empty</h1>
@@ -50,8 +56,8 @@ export const Checkout = () => {
         id: orderId,
         date: new Date().toISOString(),
         customer: formData,
-        items: items,
-        total: totalAmount,
+        items: cart,
+        total: totalPrice,
         status: 'Confirmed'
       };
       
@@ -66,7 +72,7 @@ export const Checkout = () => {
   };
 
   return (
-    <main className="bg-brand-primary min-h-screen text-brand-secondary selection:bg-brand-accent-glow selection:text-black">
+    <main className="bg-brand-primary min-h-screen text-brand-secondary selection:bg-brand-accent-glow selection:text-black pb-16 md:pb-0">
       <Navbar />
       <CartDrawer />
 
@@ -102,9 +108,10 @@ export const Checkout = () => {
                           required
                           type="text" 
                           placeholder="Niloy Ahmed"
+                          autoComplete="name"
                           value={formData.name}
                           onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          className="w-full bg-brand-charcoal border border-brand-border rounded-2xl py-5 pl-14 pr-6 text-sm font-medium focus:outline-none focus:border-brand-accent-glow/50 transition-colors"
+                          className="w-full bg-brand-charcoal border border-brand-border rounded-2xl py-5 pl-14 pr-6 text-base font-medium focus:outline-none focus:border-brand-accent-glow/50 transition-colors"
                         />
                       </div>
                     </div>
@@ -116,9 +123,11 @@ export const Checkout = () => {
                           required
                           type="tel" 
                           placeholder="+880 1XXX-XXXXXX"
+                          autoComplete="tel"
+                          inputMode="numeric"
                           value={formData.phone}
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="w-full bg-brand-charcoal border border-brand-border rounded-2xl py-5 pl-14 pr-6 text-sm font-medium focus:outline-none focus:border-brand-accent-glow/50 transition-colors"
+                          className="w-full bg-brand-charcoal border border-brand-border rounded-2xl py-5 pl-14 pr-6 text-base font-medium focus:outline-none focus:border-brand-accent-glow/50 transition-colors"
                         />
                       </div>
                     </div>
@@ -133,9 +142,10 @@ export const Checkout = () => {
                           required
                           type="email" 
                           placeholder="veloura@example.com"
+                          autoComplete="email"
                           value={formData.email}
                           onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          className="w-full bg-brand-charcoal border border-brand-border rounded-2xl py-5 pl-14 pr-6 text-sm font-medium focus:outline-none focus:border-brand-accent-glow/50 transition-colors"
+                          className="w-full bg-brand-charcoal border border-brand-border rounded-2xl py-5 pl-14 pr-6 text-base font-medium focus:outline-none focus:border-brand-accent-glow/50 transition-colors"
                         />
                       </div>
                     </div>
@@ -147,9 +157,10 @@ export const Checkout = () => {
                           required
                           type="text" 
                           placeholder="Dhaka, Bangladesh"
+                          autoComplete="address-level2"
                           value={formData.city}
                           onChange={(e) => setFormData({...formData, city: e.target.value})}
-                          className="w-full bg-brand-charcoal border border-brand-border rounded-2xl py-5 pl-14 pr-6 text-sm font-medium focus:outline-none focus:border-brand-accent-glow/50 transition-colors"
+                          className="w-full bg-brand-charcoal border border-brand-border rounded-2xl py-5 pl-14 pr-6 text-base font-medium focus:outline-none focus:border-brand-accent-glow/50 transition-colors"
                         />
                       </div>
                     </div>
@@ -161,9 +172,10 @@ export const Checkout = () => {
                       required
                       placeholder="House No, Road Name, Area..."
                       rows={3}
+                      autoComplete="street-address"
                       value={formData.address}
                       onChange={(e) => setFormData({...formData, address: e.target.value})}
-                      className="w-full bg-brand-charcoal border border-brand-border rounded-2xl py-5 px-6 text-sm font-medium focus:outline-none focus:border-brand-accent-glow/50 transition-colors resize-none"
+                      className="w-full bg-brand-charcoal border border-brand-border rounded-2xl py-5 px-6 text-base font-medium focus:outline-none focus:border-brand-accent-glow/50 transition-colors resize-none"
                     />
                   </div>
 
@@ -183,18 +195,20 @@ export const Checkout = () => {
                     </div>
                   </div>
 
-                  <button 
-                    type="submit"
-                    disabled={isProcessing}
-                    className="w-full py-6 bg-brand-secondary text-brand-primary rounded-2xl font-black uppercase tracking-[0.3em] text-xs hover:bg-brand-accent-glow transition-all flex items-center justify-center gap-3 disabled:opacity-50"
-                  >
-                    {isProcessing ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-brand-primary/20 border-t-brand-primary rounded-full animate-spin" />
-                        Processing Order
-                      </>
-                    ) : 'Confirm and Place Order'}
-                  </button>
+                  <div className="fixed bottom-[72px] left-0 right-0 p-4 bg-brand-primary border-t border-brand-border md:static md:border-0 md:p-0 z-40">
+                    <button 
+                      type="submit"
+                      disabled={isProcessing}
+                      className="w-full min-h-[44px] py-4 bg-brand-secondary text-brand-primary rounded-2xl font-black uppercase tracking-[0.3em] text-xs hover:bg-brand-accent-glow transition-all flex items-center justify-center gap-3 disabled:opacity-50"
+                    >
+                      {isProcessing ? (
+                        <>
+                          <div className="w-4 h-4 border-2 border-brand-primary/20 border-t-brand-primary rounded-full animate-spin" />
+                          Processing Order
+                        </>
+                      ) : 'Confirm and Place Order'}
+                    </button>
+                  </div>
                 </form>
               </div>
 
@@ -204,10 +218,10 @@ export const Checkout = () => {
                   <h2 className="text-xl font-display font-black uppercase tracking-widest mb-10 border-b border-brand-border pb-6">Your Order</h2>
                   
                   <div className="max-h-[40vh] overflow-y-auto space-y-6 pr-4 mb-10 scrollbar-hide">
-                    {items.map((item) => (
+                    {cart.map((item) => (
                       <div key={`${item.id}-${item.size}-${item.color}`} className="flex gap-4">
                         <div className="w-20 h-24 bg-brand-matte rounded-xl overflow-hidden flex-shrink-0">
-                          <img src={item.image} className="w-full h-full object-cover" alt={item.name} />
+                          <img src={item.image} className="w-full h-full object-cover" alt={item.name} loading="lazy" decoding="async" />
                         </div>
                         <div className="flex-1 flex flex-col justify-center">
                           <h4 className="text-xs font-black uppercase tracking-widest mb-1 line-clamp-1">{item.name}</h4>
@@ -224,7 +238,7 @@ export const Checkout = () => {
                   <div className="space-y-4 border-t border-brand-border pt-10">
                     <div className="flex justify-between text-[11px] font-bold uppercase tracking-widest opacity-40">
                       <span>Subtotal</span>
-                      <span>${totalAmount.toFixed(2)}</span>
+                      <span>${totalPrice.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-[11px] font-bold uppercase tracking-widest opacity-40">
                       <span>Shipping</span>
@@ -232,7 +246,7 @@ export const Checkout = () => {
                     </div>
                     <div className="flex justify-between text-xl font-display font-black uppercase tracking-widest pt-4 border-t border-brand-border/30">
                       <span>Total</span>
-                      <span>${totalAmount.toFixed(2)}</span>
+                      <span>${totalPrice.toFixed(2)}</span>
                     </div>
                   </div>
                 </div>
@@ -255,7 +269,18 @@ export const Checkout = () => {
 
               <div className="w-full bg-brand-charcoal border border-brand-border rounded-[2.5rem] p-10 mb-12">
                 <span className="text-[10px] text-brand-accent-glow font-black uppercase tracking-[0.4em] block mb-2">Order ID</span>
-                <span className="text-2xl font-mono font-black tracking-widest uppercase">{placedOrderId}</span>
+                <div className="flex items-center justify-center gap-3">
+                  <span className="text-2xl font-mono font-black tracking-widest uppercase">{placedOrderId}</span>
+                  <button
+                    type="button"
+                    onClick={handleCopyOrderId}
+                    aria-label="Copy order ID"
+                    title="Copy order ID"
+                    className="flex-shrink-0 w-9 h-9 rounded-xl border border-brand-border flex items-center justify-center text-brand-secondary/60 hover:text-brand-accent-glow hover:border-brand-accent-glow/50 transition-all duration-300"
+                  >
+                    {copied ? <Check size={15} className="text-brand-accent-glow" /> : <Copy size={15} />}
+                  </button>
+                </div>
                 <div className="mt-8 pt-8 border-t border-brand-border flex flex-col md:flex-row justify-center gap-6 md:gap-12">
                    <div className="text-center">
                      <span className="text-[9px] text-brand-secondary/40 font-black uppercase tracking-widest block mb-1">Items</span>
@@ -268,11 +293,11 @@ export const Checkout = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-                <Link to={`/tracking?id=${placedOrderId}`} className="flex-1 max-w-xs bg-brand-accent-glow text-black py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-white transition-all text-center">
+              <div className="flex flex-col sm:flex-row gap-4 w-full justify-center items-center">
+                <Link to={`/tracking?id=${placedOrderId}`} className="w-full sm:w-auto sm:flex-1 sm:max-w-xs bg-brand-accent-glow text-black py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-white transition-all text-center">
                   Track Your Order
                 </Link>
-                <Link to="/" className="flex-1 max-w-xs border border-brand-border py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-brand-secondary hover:text-brand-primary transition-all text-center">
+                <Link to="/" className="w-full sm:w-auto sm:flex-1 sm:max-w-xs border border-brand-border py-5 rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-brand-secondary hover:text-brand-primary transition-all text-center">
                   Back to Home
                 </Link>
               </div>

@@ -16,7 +16,7 @@ export const Archive = () => {
   ];
 
   return (
-    <main className="bg-brand-primary min-h-screen">
+    <main className="bg-brand-primary min-h-screen pb-16 md:pb-0">
       <Navbar />
       <CartDrawer />
       <div className="noise" />
@@ -55,9 +55,10 @@ export const Archive = () => {
                 <img 
                   src={item.image} 
                   alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+                  className="w-full h-full object-cover"
                   loading="lazy"
                   referrerPolicy="no-referrer"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-10 flex flex-col justify-end">
                   <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-brand-accent-glow mb-2">Collection 2024</span>

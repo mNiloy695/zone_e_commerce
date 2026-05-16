@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Instagram, Twitter, Facebook, ArrowUpRight, Send } from 'lucide-react';
+import { Send } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -55,9 +55,10 @@ export const Footer = () => {
             <input 
               type="email" 
               placeholder="YOUR EMAIL"
-              className="w-full bg-brand-secondary/5 border border-brand-border rounded-xl px-4 py-4 text-[10px] font-bold tracking-widest focus:outline-none focus:border-brand-accent-glow transition-all text-brand-secondary"
+              autoComplete="email"
+              className="w-full bg-brand-secondary/5 border border-brand-border rounded-xl px-4 py-4 text-base font-bold tracking-widest focus:outline-none focus:border-brand-accent-glow transition-all text-brand-secondary"
             />
-            <button className="absolute right-2 top-2 w-10 h-10 bg-brand-secondary text-brand-primary rounded-lg flex items-center justify-center hover:bg-brand-accent-glow hover:text-brand-primary transition-all">
+            <button aria-label="Subscribe" className="absolute right-2 top-2 touch-target w-10 h-10 bg-brand-secondary text-brand-primary rounded-lg flex items-center justify-center hover:bg-brand-accent-glow hover:text-brand-primary transition-all">
               <Send size={16} />
             </button>
           </div>

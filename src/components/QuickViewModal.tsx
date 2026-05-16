@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, ShoppingBag, Star, Share2, ShieldCheck, Truck } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import { X, Star, Share2, ShieldCheck, Truck, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface QuickViewModalProps {
   product: any;
@@ -10,7 +10,6 @@ interface QuickViewModalProps {
 }
 
 export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, isOpen, onClose }) => {
-  const { addToCart } = useCart();
 
   if (!product) return null;
 
@@ -37,7 +36,8 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, isOpen,
             {/* Close Button */}
             <button 
               onClick={onClose}
-              className="absolute top-8 right-8 z-[110] w-12 h-12 rounded-full bg-black/20 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-brand-accent-glow hover:text-black transition-all duration-300"
+              aria-label="Close"
+              className="absolute top-8 right-8 z-[110] min-h-[44px] min-w-[44px] w-12 h-12 rounded-full bg-black/20 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white hover:bg-brand-accent-glow hover:text-black transition-all duration-300"
             >
               <X size={20} />
             </button>
@@ -49,6 +49,8 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, isOpen,
                 alt={product.name}
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
             </div>
@@ -89,17 +91,15 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, isOpen,
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={() => {
-                    addToCart(product);
-                    onClose();
-                  }}
-                  className="flex-1 bg-brand-secondary text-brand-primary h-16 rounded-2xl font-black uppercase tracking-[0.3em] text-xs hover:bg-brand-accent-glow hover:text-black transition-all duration-500 shadow-2xl flex items-center justify-center gap-4 group"
+                <Link
+                  to={`/product/${product.id}`}
+                  onClick={onClose}
+                  className="flex-1 bg-brand-secondary text-brand-primary h-16 rounded-2xl font-black uppercase tracking-[0.3em] text-xs hover:bg-brand-accent-glow hover:text-black transition-all duration-500 shadow-2xl flex items-center justify-center gap-4"
                 >
-                  <ShoppingBag size={18} className="group-hover:scale-110 transition-transform" />
-                  Add to Cart
-                </button>
-                <button className="w-16 h-16 border border-brand-border rounded-2xl flex items-center justify-center text-brand-secondary hover:bg-brand-charcoal transition-all">
+                  <ArrowRight size={18} />
+                  View Details
+                </Link>
+                <button aria-label="Share product" className="min-h-[44px] min-w-[44px] w-16 h-16 border border-brand-border rounded-2xl flex items-center justify-center text-brand-secondary hover:bg-brand-charcoal transition-all">
                   <Share2 size={20} />
                 </button>
               </div>

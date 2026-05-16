@@ -3,7 +3,7 @@ import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { CartDrawer } from '../components/CartDrawer';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, Package, Truck, CheckCircle2, Clock, User, MapPin, Phone, ShoppingBag, AlertCircle } from 'lucide-react';
+import { Search, Package, Truck, CheckCircle2, Clock, User, MapPin, Phone, AlertCircle } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 export const Tracking = () => {
@@ -50,7 +50,7 @@ export const Tracking = () => {
   };
 
   return (
-    <main className="bg-brand-primary min-h-screen text-brand-secondary selection:bg-brand-accent-glow selection:text-black">
+    <main className="bg-brand-primary min-h-screen text-brand-secondary selection:bg-brand-accent-glow selection:text-black pb-16 md:pb-0">
       <Navbar />
       <CartDrawer />
       
@@ -79,9 +79,10 @@ export const Tracking = () => {
               <input 
                 type="text" 
                 placeholder="EX: VZ-9982-X"
+                autoComplete="off"
                 value={orderId}
                 onChange={(e) => setOrderId(e.target.value)}
-                className="w-full bg-brand-primary border border-brand-border rounded-2xl py-5 pl-14 pr-6 text-sm font-medium tracking-wider focus:outline-none focus:border-brand-accent-glow/50 transition-colors uppercase"
+                className="w-full bg-brand-primary border border-brand-border rounded-2xl py-5 pl-14 pr-6 text-base font-medium tracking-wider focus:outline-none focus:border-brand-accent-glow/50 transition-colors uppercase"
               />
             </div>
             <button 

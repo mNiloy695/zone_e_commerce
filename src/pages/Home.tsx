@@ -58,7 +58,7 @@ const WhyChooseUs = () => {
 };
 
 export const Home = () => {
-  const trendingProducts = PRODUCTS.slice(0, 3);
+  const trendingProducts = PRODUCTS.slice(0, 4);
   const cursorRef = useRef<HTMLDivElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
 
@@ -74,7 +74,7 @@ export const Home = () => {
   }, []);
 
   return (
-    <main className="relative overflow-hidden bg-brand-primary pb-32 md:pb-0">
+    <main className="relative overflow-hidden bg-brand-primary pb-16 md:pb-0">
       <div ref={cursorRef} className="custom-cursor hidden lg:block" />
       <div ref={glowRef} className="custom-cursor-glow hidden lg:block" />
       <div className="noise" />
@@ -107,7 +107,7 @@ export const Home = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-8 overflow-visible py-1">
           {trendingProducts.map((product, i) => (
             <ProductCard key={product.id} product={product} index={i} />
           ))}
@@ -151,7 +151,8 @@ export const Home = () => {
               <input 
                 type="email" 
                 placeholder="ENTRY@EMAIL.COM" 
-                className="flex-1 bg-transparent border-none px-4 md:px-6 py-4 md:py-5 text-[10px] font-black tracking-widest focus:outline-none placeholder:text-brand-muted w-full text-brand-secondary"
+                autoComplete="email"
+                className="flex-1 bg-transparent border-none px-4 md:px-6 py-4 md:py-5 text-base font-black tracking-widest focus:outline-none placeholder:text-brand-muted w-full text-brand-secondary"
               />
               <button className="w-full sm:w-auto px-10 py-4 md:py-5 bg-brand-accent-glow text-black font-display font-black uppercase tracking-wider text-[10px] hover:bg-brand-secondary hover:text-brand-primary transition-all duration-500 rounded-xl md:rounded-2xl shadow-[0_10px_30px_rgba(197,160,89,0.2)]">
                 Join Now

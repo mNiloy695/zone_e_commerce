@@ -65,7 +65,7 @@ export const Testimonials = () => {
 
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full overflow-hidden border border-brand-accent-glow/30">
-                <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" />
+                <img src={review.avatar} alt={review.name} className="w-full h-full object-cover" loading="lazy" decoding="async" />
               </div>
               <div>
                 <h4 className="font-display font-bold uppercase text-sm text-brand-secondary">{review.name}</h4>
@@ -80,7 +80,7 @@ export const Testimonials = () => {
 
       {/* Marquee or extra flair can go here */}
       <div className="mt-20 overflow-hidden py-10 border-y border-brand-border">
-        <div className="flex animate-marquee whitespace-nowrap gap-20">
+        <div className="flex whitespace-nowrap gap-20">
           {[...Array(4)].map((_, i) => (
             <div key={i} className="flex gap-20 items-center">
               <span className="text-5xl md:text-8xl font-display font-black uppercase tracking-tighter text-brand-secondary/5 italic">Premium Fabric</span>

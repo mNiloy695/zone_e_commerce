@@ -54,7 +54,7 @@ export const PRODUCTS = [
     images: [
       "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1503341509153-d8ac0ac7551a?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1503341918561-002d2466986e?q=80&w=1200&auto=format&fit=crop"
     ],
     colors: ["#050505", "#0000ff"],
@@ -107,7 +107,7 @@ export const PRODUCTS = [
     image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1200&auto=format&fit=crop",
     images: [
       "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1503341509153-d8ac0ac7551a?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1583744414846-48211063bc81?q=80&w=1200&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop"
     ],
@@ -115,5 +115,77 @@ export const PRODUCTS = [
     sizes: ["M", "L", "XL"],
     rating: 5.0,
     reviews: 18,
+  },
+  {
+    id: "7",
+    name: "Noir Core",
+    price: 132,
+    category: "oversized",
+    description: "Structured oversized tee in deep noir tone with a clean premium finish and durable heavyweight fabric.",
+    image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1200&auto=format&fit=crop"
+    ],
+    colors: ["#050505", "#2b2b2b"],
+    sizes: ["S", "M", "L", "XL"],
+    rating: 4.8,
+    reviews: 73,
+  },
+  {
+    id: "8",
+    name: "Ivory Frame",
+    price: 108,
+    category: "minimal",
+    description: "Minimal silhouette with soft premium cotton and clean seams, designed for everyday elevated wear.",
+    image: "https://images.unsplash.com/photo-1527719327859-c6ce80353573?q=80&w=1200&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1527719327859-c6ce80353573?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=1200&auto=format&fit=crop"
+    ],
+    colors: ["#ffffff", "#f1ece2"],
+    sizes: ["S", "M", "L", "XL"],
+    rating: 4.7,
+    reviews: 56,
+  },
+  {
+    id: "9",
+    name: "Signal Print",
+    price: 149,
+    category: "graphic",
+    description: "Bold front artwork and heavyweight base tee for a statement streetwear profile.",
+    image: "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503341918561-002d2466986e?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop"
+    ],
+    colors: ["#050505", "#d9d9d9"],
+    sizes: ["M", "L", "XL"],
+    rating: 4.9,
+    reviews: 39,
+  },
+  {
+    id: "10",
+    name: "Urban Relic",
+    price: 172,
+    category: "streetwear",
+    description: "Limited run streetwear tee with dense texture, crafted for a premium collector aesthetic.",
+    image: "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1200&auto=format&fit=crop",
+    images: [
+      "https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop"
+    ],
+    colors: ["#1a1a1a", "#7a6850"],
+    sizes: ["M", "L", "XL", "XXL"],
+    rating: 5.0,
+    reviews: 21,
   }
 ];

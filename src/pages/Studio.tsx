@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 
 export const Studio = () => {
   return (
-    <main className="bg-brand-primary min-h-screen">
+    <main className="bg-brand-primary min-h-screen pb-16 md:pb-0">
       <Navbar />
       <CartDrawer />
       <div className="noise" />
@@ -30,10 +30,11 @@ export const Studio = () => {
           <div className="lg:col-span-7 aspect-[4/5] bg-brand-matte rounded-[4rem] overflow-hidden relative group">
              <img 
                src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?q=80&w=1200&auto=format&fit=crop" 
-               className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+               className="w-full h-full object-cover"
                alt="Fabric detail"
                loading="lazy"
                referrerPolicy="no-referrer"
+               decoding="async"
              />
              <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-black/0" />
              {/* Logo branding overlay */}
@@ -74,10 +75,11 @@ export const Studio = () => {
         <div className="relative h-[80vh] rounded-[4rem] overflow-hidden mb-48 group">
            <img 
              src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=2000&auto=format&fit=crop" 
-             className="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-110"
+             className="w-full h-full object-cover"
              alt="Studio lifestyle"
              loading="lazy"
              referrerPolicy="no-referrer"
+             decoding="async"
            />
            <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center p-12 text-center">
               <h2 className="text-5xl md:text-8xl font-display font-black uppercase mb-8">Culture Over Consumption</h2>

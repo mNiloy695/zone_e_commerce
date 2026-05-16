@@ -10,6 +10,7 @@ import { Studio } from './pages/Studio';
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { useEffect } from 'react';
+import { MotionConfig } from 'motion/react';
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -24,24 +25,25 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <Router>
-      <ThemeProvider>
-        <CartProvider>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/collections" element={<Collections />} />
-            <Route path="/archive" element={<Archive />} />
-            <Route path="/drops" element={<Drops />} />
-            <Route path="/studio" element={<Studio />} />
-            <Route path="/tracking" element={<Tracking />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/shop" element={<Collections />} />
-          </Routes>
-        </CartProvider>
-      </ThemeProvider>
-    </Router>
+    <MotionConfig reducedMotion="always" transition={{ duration: 0 }}>
+      <Router>
+        <ThemeProvider>
+          <CartProvider>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/collections" element={<Collections />} />
+              <Route path="/archive" element={<Archive />} />
+              <Route path="/drops" element={<Drops />} />
+              <Route path="/studio" element={<Studio />} />
+              <Route path="/tracking" element={<Tracking />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/shop" element={<Collections />} />
+            </Routes>
+          </CartProvider>
+        </ThemeProvider>
+      </Router>
+    </MotionConfig>
   );
 }
-
